@@ -1,23 +1,35 @@
 package user
 
 import (
-	"awesomeProject/src/configuration"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 	"log"
 )
 
-func userRepo() *UserRepo {
-	return NewUserRepo(configuration.GetConfig().Conn)
+var userRepo IUserRepo
+
+func InitUserService(db *gorm.DB) {
+	userRepo = NewUserRepo(db)
 }
 
-func Test() {
-	user, err := userRepo().GetAllUser()
+type IUserService interface {
+	GetById(*gin.Context)
+	GetAll(*gin.Context)
+}
+
+type service struct{}
+
+func NewUserService() IUserService {
+	return &service{}
+}
+
+func (u *service) GetById(context *gin.Context) {
+	user, err := userRepo.GetUserById(0)
 	if err != nil {
 		panic(err)
 	}
 	log.Println(user)
 }
 
-func getAll(context *gin.Context) {
-
+func (u *service) GetAll(context *gin.Context) {
 }

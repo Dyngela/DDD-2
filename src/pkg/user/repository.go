@@ -4,32 +4,38 @@ import (
 	"gorm.io/gorm"
 )
 
-type userInterface interface {
+type IUserRepo interface {
 	CreateUser()
 	UpdateUser()
+	GetAllUser() ([]Users, error)
+	GetUserById(uint) (Users, error)
 }
 
-type UserRepo struct {
-	repo *gorm.DB
-	userInterface
+type repository struct {
+	db *gorm.DB
 }
 
-func NewUserRepo(db *gorm.DB) *UserRepo {
-	return &UserRepo{repo: db}
+func NewUserRepo(db *gorm.DB) IUserRepo {
+	return &repository{db: db}
 }
 
-func (u *UserRepo) CreateUser() {
+func (r *repository) CreateUser() {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (u *UserRepo) UpdateUser() {
+func (r *repository) UpdateUser() {
 	//TODO implement me
 	panic("implement me")
 }
 
-func (u *UserRepo) GetAllUser() ([]Users, error) {
+func (r *repository) GetAllUser() ([]Users, error) {
 	var users []Users
-	err := u.repo.Model(&Users{}).Preload("Roles").Find(&users).Error
+	err := r.db.Model(&Users{}).Preload("Roles").Find(&users).Error
 	return users, err
+}
+
+func (r *repository) GetUserById(u uint) (Users, error) {
+	//TODO implement me
+	panic("implement me")
 }

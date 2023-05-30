@@ -4,38 +4,54 @@ import (
 	"awesomeProject/src/configuration"
 	"awesomeProject/src/pkg/user"
 	"github.com/gin-gonic/gin"
-	"log"
+	"gorm.io/gorm"
 )
 
 func init() {
 	var err error
-	err = configuration.ConnectToPostgres()
+	var db *gorm.DB
+
+	db, err = configuration.ConnectToPostgres()
 	if err != nil {
 		panic(err)
 	}
-	if err = migrateSchema(); err != nil {
+	if err = migrateSchema(db); err != nil {
 		panic(err)
 	}
 
 	gin.ForceConsoleColor()
-	gin.SetMode(gin.ReleaseMode)
+	gin.SetMode(gin.DebugMode)
+	initServices(db)
 }
 
-func migrateSchema() error {
-	err := configuration.GetConfig().Conn.AutoMigrate(&user.Users{}, &user.Roles{})
+func main() {
+	service := user.NewUserService()
+	service.GetById(nil)
+	router := gin.New()
+	initControllers(router)
+}
+
+func migrateSchema(db *gorm.DB) error {
+	err := db.AutoMigrate(&user.Users{}, &user.Roles{})
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func main() {
-	log.Println("Ok")
-	user.Test()
-	router := gin.New()
-	initControllers(router)
+/*
+*   initControllers: Init dependency injection needed in the controllers
+*    Then and only then we can initialize the API endpoints
+ */
+func initControllers(routing *gin.Engine) {
+	user.InitUserController()
+
+	user.UserController(routing)
 }
 
-func initControllers(routing *gin.Engine) {
-	user.UserController(routing)
+/**
+ * initControllers: Init dependency injection needed in the services
+ */
+func initServices(db *gorm.DB) {
+	user.InitUserService(db)
 }
