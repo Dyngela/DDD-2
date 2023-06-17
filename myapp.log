@@ -1,0 +1,29 @@
+[90m2023-06-02 03:03:21[0m | INFO  | [1mcmd\main.go:25[0m[36m >[0m caze
+[90m2023-06-02 03:03:46[0m | INFO  | [1mcmd\main.go:25[0m[36m >[0m caze
+[90m2023-06-02 03:05:24[0m | INFO  | [1mcmd\main.go:25[0m[36m >[0m caze
+{"level":"info","time":"2023-06-02T03:10:30+02:00","caller":"C:/dev/GO/go-scafold/cmd/main.go:25","message":"caze"}
+{"level":"info","time":"2023-06-02T03:12:52+02:00","caller":"C:/dev/GO/go-scafold/cmd/main.go:25","message":"caze"}
+{"level":"info","time":"2023-06-08T00:55:58+02:00","caller":"C:/dev/GO/go-scafold/main.go:25","message":"caze"}
+{"level":"info","time":"2023-06-08T00:57:18+02:00","caller":"C:/dev/GO/go-scafold/main.go:25","message":"caze"}
+{"level":"info","time":"2023-06-08T00:58:25+02:00","caller":"C:/dev/GO/go-scafold/main.go:27","message":"caze"}
+{"level":"info","time":"2023-06-08T00:59:48+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:01:25+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:01:38+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:01:51+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:02:14+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:02:22+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:05:08+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:05:33+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:06:46+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:09:52+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:11:31+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:13:00+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:45:16+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-08T01:45:44+02:00","caller":"C:/dev/GO/go-scafold/main.go:28","message":"caze"}
+{"level":"info","time":"2023-06-13T03:00:57+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}
+{"level":"info","time":"2023-06-13T03:01:40+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}
+{"level":"info","time":"2023-06-13T03:02:46+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}
+{"level":"info","time":"2023-06-13T03:03:44+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}
+{"level":"info","time":"2023-06-13T03:09:01+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}
+{"level":"info","time":"2023-06-13T03:10:10+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}
+{"level":"info","time":"2023-06-13T03:12:17+02:00","caller":"C:/dev/GO/go-scafold/main.go:29","message":"caze"}

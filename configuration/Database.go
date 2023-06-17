@@ -7,10 +7,6 @@ import (
 	"time"
 )
 
-type Config struct {
-	Conn *gorm.DB
-}
-
 func ConnectToPostgres() (*gorm.DB, error) {
 	var err error
 	var db *gorm.DB

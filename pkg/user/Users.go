@@ -6,7 +6,7 @@ import (
 
 type Users struct {
 	gorm.Model
-	Name    string /*`gorm:"column:field_a"`*/
+	Name    string
 	Roles   Roles
 	RolesID uint
 }

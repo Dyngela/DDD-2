@@ -1,0 +1,76 @@
+definitions:
+  gorm.DeletedAt:
+    properties:
+      time:
+        type: string
+      valid:
+        description: Valid is true if Time is not NULL
+        type: boolean
+    type: object
+  user.Roles:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      roleName:
+        type: string
+      updatedAt:
+        type: string
+      users:
+        items:
+          $ref: '#/definitions/user.Users'
+        type: array
+    type: object
+  user.Users:
+    properties:
+      createdAt:
+        type: string
+      deletedAt:
+        $ref: '#/definitions/gorm.DeletedAt'
+      id:
+        type: integer
+      name:
+        type: string
+      roles:
+        $ref: '#/definitions/user.Roles'
+      rolesID:
+        type: integer
+      updatedAt:
+        type: string
+    type: object
+  utils.APIError:
+    properties:
+      message:
+        type: string
+    type: object
+info:
+  contact: {}
+paths:
+  /example/helloworld:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      parameters:
+      - description: Some ID
+        in: path
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/user.Users'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/utils.APIError'
+      summary: Get a user by its ID
+      tags:
+      - User
+swagger: "2.0"
