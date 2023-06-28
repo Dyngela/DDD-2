@@ -24,7 +24,7 @@ func UserController(router *gin.Engine) {
 // @Produce json
 // @Param   id     path    string     true        "Some ID"
 // @Success 200 {object} Users
-// @Failure 400 {object} utils.APIError
+// @Failure 400 {object} common.APIError
 // @Router /example/helloworld [get]
 func getById(context *gin.Context) {
 	userService.GetById()

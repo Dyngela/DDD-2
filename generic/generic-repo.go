@@ -13,7 +13,7 @@ type IGenericRepo interface {
 }
 
 type repository struct {
-	db     *gorm.DB
+	db *gorm.DB
 }
 
 func NewGenericRepo(db *gorm.DB) IGenericRepo {
@@ -44,7 +44,7 @@ func (r *repository) Delete(T any, id uint) error {
 //func (r *repository) FindAll(T any, ctx *gin.Context) ([]any, error) {
 //	var generic []any
 //
-//	err := r.db.Model(&T).Scopes(utils.Paginate(ctx.Request)).Find(&generic).Error
+//	err := r.db.Model(&T).Scopes(common.Paginate(ctx.Request)).Find(&generic).Error
 //	if err != nil {
 //		return nil, err
 //	}

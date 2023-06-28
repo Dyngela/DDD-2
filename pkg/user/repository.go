@@ -1,7 +1,7 @@
 package user
 
 import (
-	"awesomeProject/utils"
+	"awesomeProject/common"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
 	"gorm.io/gorm"
@@ -44,7 +44,7 @@ func (r *repository) Update(users Users) error {
 
 func (r *repository) FindAll(ctx *gin.Context) ([]Users, error) {
 	var users []Users
-	err := r.db.Model(&Users{}).Preload("Roles").Scopes(utils.Paginate(ctx.Request)).Find(&users).Error
+	err := r.db.Model(&Users{}).Preload("Roles").Scopes(common.Paginate(ctx.Request)).Find(&users).Error
 	if err != nil {
 		return nil, err
 	}

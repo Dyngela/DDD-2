@@ -1,4 +1,4 @@
-package utils
+package common
 
 // Dummy function
 func sendMail() {}

@@ -1,14 +1,11 @@
 package main
 
 import (
-	"awesomeProject/configuration"
-	"awesomeProject/docs"
 	"awesomeProject/generic"
+	"awesomeProject/mapper"
 	"awesomeProject/pkg/user"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
-	swaggerFiles "github.com/swaggo/files"
-	ginSwagger "github.com/swaggo/gin-swagger"
 	"gorm.io/gorm"
 )
 
@@ -18,33 +15,34 @@ type Config struct {
 }
 
 func init() {
-	var err error
-	var config Config
-
-	config.Conn, err = configuration.ConnectToPostgres()
-	if err != nil {
-		panic(err)
-	}
-	config.Logger = configuration.InitLogger()
-	config.Logger.Info().Msg("caze")
-	if err = migrateSchema(config.Conn); err != nil {
-		panic(err)
-	}
-
-	gin.ForceConsoleColor()
-	gin.SetMode(gin.DebugMode)
-	initServices(config)
+	//var err error
+	//var config Config
+	//
+	//config.Conn, err = configuration.ConnectToPostgres()
+	//if err != nil {
+	//	panic(err)
+	//}
+	//config.Logger = configuration.InitLogger()
+	//config.Logger.Info().Msg("caze")
+	//if err = migrateSchema(config.Conn); err != nil {
+	//	panic(err)
+	//}
+	//
+	//gin.ForceConsoleColor()
+	//gin.SetMode(gin.DebugMode)
+	//initServices(config)
 
 }
 
 func main() {
-	service := user.NewUserService()
-	service.GetAll()
-	router := gin.New()
-	initControllers(router)
-	docs.SwaggerInfo.BasePath = "/api/v1"
-	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	router.Run(":8080")
+	//mapper.GenerateMapping([]interface{}{user.UserMapper})
+	mapper.GenerateMapping()
+
+	//router := gin.New()
+	//initControllers(router)
+	//docs.SwaggerInfo.BasePath = "/api/v1"
+	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+	//router.Run(":8080")
 }
 
 func migrateSchema(db *gorm.DB) error {

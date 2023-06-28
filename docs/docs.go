@@ -47,7 +47,7 @@ const docTemplate = `{
                     "400": {
                         "description": "Bad Request",
                         "schema": {
-                            "$ref": "#/definitions/utils.APIError"
+                            "$ref": "#/definitions/common.APIError"
                         }
                     }
                 }
@@ -119,7 +119,7 @@ const docTemplate = `{
                 }
             }
         },
-        "utils.APIError": {
+        "common.APIError": {
             "type": "object",
             "properties": {
                 "message": {

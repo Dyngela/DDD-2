@@ -2,7 +2,7 @@ package user
 
 type IUserMapper interface {
 	DtoToUser(dto UsersDto) Users
-	UserToDto(user Users) UsersDto
+	//UserToDto(user Users) UsersDto
 }
 
 type mapper struct{}
