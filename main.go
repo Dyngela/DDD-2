@@ -1,9 +1,8 @@
 package main
 
 import (
-	"awesomeProject/generic"
-	"awesomeProject/mapper"
-	"awesomeProject/pkg/user"
+	"awesomeProject/pkg/PFC"
+	"awesomeProject/pkg/poem"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
 	"gorm.io/gorm"
@@ -22,9 +21,8 @@ func init() {
 	//if err != nil {
 	//	panic(err)
 	//}
-	//config.Logger = configuration.InitLogger()
-	//config.Logger.Info().Msg("caze")
-	//if err = migrateSchema(config.Conn); err != nil {
+	//err = migrateSchema(config.Conn)
+	//if err != nil {
 	//	panic(err)
 	//}
 	//
@@ -35,18 +33,19 @@ func init() {
 }
 
 func main() {
-	//mapper.GenerateMapping([]interface{}{user.UserMapper})
-	mapper.GenerateMapping()
-
 	//router := gin.New()
 	//initControllers(router)
-	//docs.SwaggerInfo.BasePath = "/api/v1"
-	//router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	//router.Run(":8080")
+	//
+	//err := router.Run(":8080")
+	//if err != nil {
+	//	panic(err)
+	//}
+	player := PFC.NewPlayer()
+	PFC.NewGame().Play(player.AiPlay())
 }
 
 func migrateSchema(db *gorm.DB) error {
-	err := db.AutoMigrate(&user.Users{}, &user.Roles{})
+	err := db.AutoMigrate(&poem.Poem{})
 	if err != nil {
 		return err
 	}
@@ -58,15 +57,14 @@ func migrateSchema(db *gorm.DB) error {
 *    Then and only then we can initialize the API endpoints
  */
 func initControllers(routing *gin.Engine) {
-	user.InitUserController()
+	poem.InitPoemController()
 
-	user.UserController(routing)
+	poem.PoemController(routing)
 }
 
 /**
  * initControllers: Init dependency injection needed in the services
  */
 func initServices(config Config) {
-	user.InitUserService(config.Conn, config.Logger)
-	generic.NewGenericRepo(config.Conn)
+	poem.InitPoemService(config.Conn)
 }

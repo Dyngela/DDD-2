@@ -1,6 +1,3 @@
-cache
-docker
-mailing
-complete crud
-mapper
-functional programming -> hashmap and array.map()
+# Erwan Nutz
+
+Poem et pierre feuille ciseaux tp
