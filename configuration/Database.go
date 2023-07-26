@@ -20,6 +20,7 @@ func ConnectToPostgres() (*gorm.DB, error) {
 	if conn, err = db.DB(); err != nil {
 		return nil, err
 	}
+
 	conn.SetMaxIdleConns(10)
 	conn.SetMaxOpenConns(100)
 	conn.SetConnMaxLifetime(time.Hour)
