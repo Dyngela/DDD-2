@@ -32,8 +32,12 @@ func (p play) Play(myPlay Sign) {
 
 	referee := NewReferee()
 	player := NewPlayer()
+	historic := NewHistoric()
+	
 	aiSign := player.AiPlay()
 	winner := referee.Match(myPlay, aiSign)
+	historic.Save(winner, myPlay, aiSign)
+
 	if winner == Human {
 		log.Println("You win")
 	} else if winner == AI {
