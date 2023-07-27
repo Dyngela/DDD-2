@@ -2,6 +2,7 @@ package main
 
 import (
 	"awesomeProject/pkg/PFC"
+	"awesomeProject/pkg/PFC/CLI"
 	"awesomeProject/pkg/poem"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
@@ -40,8 +41,11 @@ func main() {
 	//if err != nil {
 	//	panic(err)
 	//}
-	player := PFC.NewPlayer()
-	PFC.NewGame().Play(player.AiPlay())
+
+	//player := PFC.NewPlayer()
+	//PFC.NewGame().Play(player.AiPlay())
+	histo := PFC.NewHistoric()
+	CLI.NewCli().Init(histo)
 }
 
 func migrateSchema(db *gorm.DB) error {

@@ -1,15 +1,24 @@
 package PFC
 
-import "log"
+import (
+	"fmt"
+	"log"
+)
+
+var histo IHistoric
 
 type IPlay interface {
 	Play(sign Sign)
+	GetHistoric()
+	End()
 }
 
-type play struct{}
+type play struct {
+	historic IHistoric
+}
 
-func NewGame() IPlay {
-	return &play{}
+func NewGame(historic IHistoric) IPlay {
+	return &play{historic: historic}
 }
 
 type Sign string
@@ -32,16 +41,30 @@ func (p play) Play(myPlay Sign) {
 
 	referee := NewReferee()
 	player := NewPlayer()
-	historic := NewHistoric()
-	
+
 	aiSign := player.AiPlay()
 	winner := referee.Match(myPlay, aiSign)
-	historic.Save(winner, myPlay, aiSign)
+	p.historic.Save(winner, myPlay, aiSign)
 
 	if winner == Human {
 		log.Println("You win")
 	} else if winner == AI {
 		log.Println("Computer win")
+	} else {
+		log.Println("It's a tie")
+	}
+}
+
+func (p play) GetHistoric() {
+	fmt.Println(p.historic.GetHistoric())
+}
+
+func (p play) End() {
+	winner := p.historic.GetWinner()
+	if winner == Human {
+		log.Println("You win the game")
+	} else if winner == AI {
+		log.Println("Computer win the game")
 	} else {
 		log.Println("It's a tie")
 	}

@@ -12,6 +12,7 @@ type Histo struct {
 type IHistoric interface {
 	Save(winner Winner, humanSign Sign, aiSign Sign)
 	GetHistoric() map[int]Histo
+	GetWinner() Winner
 }
 type repo struct{}
 
@@ -32,4 +33,25 @@ func (r repo) Save(winner Winner, human Sign, ai Sign) {
 
 func (r repo) GetHistoric() map[int]Histo {
 	return historic
+}
+
+func (r repo) GetWinner() Winner {
+	var ai int
+	var human int
+
+	for i := 1; i < index; i++ {
+		if historic[i].Winner == AI {
+			ai++
+		} else if historic[i].Winner == Human {
+			human++
+		}
+	}
+
+	if human > ai {
+		return Human
+	} else if human < ai {
+		return AI
+	} else {
+		return Tie
+	}
 }
