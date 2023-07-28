@@ -3,6 +3,7 @@ package main
 import (
 	"awesomeProject/pkg/PFC"
 	"awesomeProject/pkg/PFC/CLI"
+	"awesomeProject/pkg/library"
 	"awesomeProject/pkg/poem"
 	"github.com/gin-gonic/gin"
 	"github.com/rs/zerolog"
@@ -62,8 +63,10 @@ func migrateSchema(db *gorm.DB) error {
  */
 func initControllers(routing *gin.Engine) {
 	poem.InitPoemController()
+	library.InitLibController()
 
 	poem.PoemController(routing)
+	library.LibController(routing)
 }
 
 /**
@@ -71,4 +74,5 @@ func initControllers(routing *gin.Engine) {
  */
 func initServices(config Config) {
 	poem.InitPoemService(config.Conn)
+	library.InitLibService(config.Conn)
 }
